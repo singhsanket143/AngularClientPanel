@@ -18,7 +18,7 @@ export class ClientDetailsComponent implements OnInit {
   constructor(public clientService: ClientService,
               public router: Router,
               public route: ActivatedRoute,
-              public flashMessageservice: FlashMessagesService) { }
+              public flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -30,6 +30,12 @@ export class ClientDetailsComponent implements OnInit {
         this.client = client;
       }
     );
+  }
+
+  updateBalance(id: string) {
+    this.clientService.updateClient(this.id, this.client);
+    this.flashMessagesService.show('Balance Updated', {cssClass: 'alert-success', timeout: 4000});
+    this.router.navigate(['/client/' + this.id]);
   }
 
 }
