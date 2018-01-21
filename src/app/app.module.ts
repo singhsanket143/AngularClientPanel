@@ -1,19 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ClientsComponent } from './components/clients/clients.component';
-import { ClientDetailsComponent } from './components/client-details/client-details.component';
-import { AddClientComponent } from './components/add-client/add-client.component';
-import { EditClientComponent } from './components/edit-client/edit-client.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {AppComponent} from './app.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {ClientsComponent} from './components/clients/clients.component';
+import {ClientDetailsComponent} from './components/client-details/client-details.component';
+import {AddClientComponent} from './components/add-client/add-client.component';
+import {EditClientComponent} from './components/edit-client/edit-client.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
+import {SettingsComponent} from './components/settings/settings.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuth, AngularFireAuthModule} from 'angularfire2/auth';
@@ -21,12 +21,14 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {ClientService} from './services/client.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
+import {FormsModule} from '@angular/forms';
 
 
 const appRoutes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'add-client', component: AddClientComponent}
 ];
 
 export const firebaseConfig = {
@@ -55,6 +57,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
     HttpClientModule,
     AngularFireModule,
     AngularFireDatabaseModule,
@@ -62,8 +65,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [AngularFireAuth,
-              AngularFireDatabase,
-              ClientService],
+    AngularFireDatabase,
+    ClientService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
