@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientService} from "../../services/client.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FlashMessagesService} from "angular2-flash-messages";
-import {Client} from "../../Models/Client";
+import {ClientService} from '../../services/client.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FlashMessagesService} from 'angular2-flash-messages';
+import {Client} from '../../Models/Client';
 
 @Component({
   selector: 'app-client-details',
@@ -36,6 +36,14 @@ export class ClientDetailsComponent implements OnInit {
     this.clientService.updateClient(this.id, this.client);
     this.flashMessagesService.show('Balance Updated', {cssClass: 'alert-success', timeout: 4000});
     this.router.navigate(['/client/' + this.id]);
+  }
+
+  onDeleteClick() {
+    if(confirm('Are you sure?')) {
+      this.clientService.deleteClient(this.id);
+      this.flashMessagesService.show('Client Deleted', {cssClass: 'alert-success', timeout: 4000});
+      this.router.navigate(['/']);
+    }
   }
 
 }
