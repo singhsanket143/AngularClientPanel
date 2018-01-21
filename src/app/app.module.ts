@@ -18,9 +18,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuth, AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {ClientService} from "./services/client.service";
-import {HttpClientModule} from "@angular/common/http";
-import {AngularFireDatabaseModule} from "angularfire2/database-deprecated";
+import {ClientService} from './services/client.service';
+import {HttpClientModule} from '@angular/common/http';
+import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
 
 
 const appRoutes: Routes = [
