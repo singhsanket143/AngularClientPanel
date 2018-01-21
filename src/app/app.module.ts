@@ -22,6 +22,7 @@ import {ClientService} from './services/client.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
 import {FormsModule} from '@angular/forms';
+import {FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages';
 
 
 const appRoutes: Routes = [
@@ -62,11 +63,14 @@ export const firebaseConfig = {
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    FlashMessagesModule
   ],
   providers: [AngularFireAuth,
     AngularFireDatabase,
-    ClientService],
+    ClientService,
+    FlashMessagesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
